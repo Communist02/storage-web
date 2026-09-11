@@ -27,16 +27,16 @@ function AuthPage() {
     let body: React.JSX.Element;
     if (auth.isAuthenticated) {
         body = <Spin description="Идет процесс входа" size='large' />;
-        const username = getCookie('username');
-        if (!username) {
+        const sid = getCookie('sid');
+        if (!sid) {
             auth.removeUser();
-        } else if (username !== auth.user?.profile.sub) {
+        } else if (sid !== auth.user?.profile.sid) {
             auth.signinSilent();
         }
     } else if (auth.isLoading || auth.user && auth.user.expired) {
         body = <Spin description="Идет процесс входа" size='large' />;
     } else {
-        if (getCookie('username')) {
+        if (getCookie('sid')) {
             body = <Spin description="Идет процесс входа" size='large' />;
             auth.signinSilent();
         } else {

@@ -641,7 +641,7 @@ function App() {
                         }
                         <Dropdown trigger={['click']} menu={{ items, onClick: onClickLogin }}>
                             <Button iconPlacement='end' type="primary" shape="round" icon={<UserOutlined />}>
-                                {auth.user?.profile.sub}
+                                {auth.user?.profile.preferred_username}
                             </Button>
                         </Dropdown>
                     </Space>
