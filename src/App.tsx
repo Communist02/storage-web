@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, lazy, Suspense } from 'react';
 import './App.css';
-import AuthPage from './auth/AuthPage';
+import AuthPage, { getCookie } from './auth/AuthPage';
 import Groups from './groups/Groups';
 import { Button, Dropdown, Select, Result, Flex, Space, Tag, ConfigProvider, App as AntApp, theme, Layout, Card, Drawer, Modal, Input, FloatButton, Tooltip, Spin, message as Message } from 'antd';
 import { LogoutOutlined, TeamOutlined, UserOutlined, HistoryOutlined, UploadOutlined, SunOutlined, SettingOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
@@ -97,7 +97,7 @@ function App() {
     }
 
     useEffect(() => {
-        if (auth.user && !auth.user.expired) {
+        if (auth.user && !auth.user.expired && getCookie('sid')) {
             login(auth.user.access_token);
         }
     }, [auth.isAuthenticated]);
