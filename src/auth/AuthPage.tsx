@@ -30,6 +30,7 @@ function AuthPage() {
         const sid = getCookie('sid');
         if (!sid) {
             auth.removeUser();
+            location.reload();
         } else if (sid !== auth.user?.profile.sid) {
             auth.signinSilent();
         }

@@ -104,12 +104,13 @@ export class ApiClient {
                 new_url = `${this.api.defaults.baseURL}/collections/${collection_id}/archive?${fileQuery}`;
             }
             if (window.location.hostname !== new URL(url).hostname) {
-                document.cookie = `token=${this.token}; path=/; SameSite=Lax`;
                 if (files.length === 1 && !files[0].isDirectory) {
                     new_url += `?token=${this.token}`
                 } else {
                     new_url += `&token=${this.token}`
                 }
+            } else {
+                document.cookie = `token=${this.token}; path=/; SameSite=Lax`;
             }
             window.location.href = new_url;
         } catch (error) {
