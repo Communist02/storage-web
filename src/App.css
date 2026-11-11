@@ -26,8 +26,11 @@
     display: none;
   }
 
-  .header-right {
+  .header-right>* {
     display: none;
+  }
+  .header-right {
+    padding: 0;
   }
 }
 
